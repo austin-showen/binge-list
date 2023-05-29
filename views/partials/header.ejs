@@ -8,5 +8,5 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <header><a href='/'>Home</a> | <a href='/search'>Find a Show</a><% if (user) { %> | My Shows | <a href='/logout'>Log Out</a><% } else { %> | <a href='/auth/google'>Log In</a><% } %></header>
+  <header><a href='/'>Home</a> | <a href='/search'>Find a Show</a><% if (user) { %> | <a href='/series'>My Shows</a> | <a href='/logout'>Log Out</a><% } else { %> | <a href='/auth/google'>Log In</a><% } %></header>
   <h1><%= title %></h1>
