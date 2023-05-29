@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+  <form action="/search/search">
+    <input type="text" name="series">
+    <button>Search</button>
+  </form>
+  <div class="series-container">
+    <% series.forEach((s) => { %>
+      <div class="series-preview">
+        <% if (s.poster_path) { %>
+          <img class="thumbnail" src="https://image.tmdb.org/t/p/original/<%= s.poster_path %>" alt="<%= s.name %>">
+        <% } else { %>
+          <img class="thumbnail" src="https://otv.one/uploads/default_image/thumbnail.jpg" alt="No Thumbnail Available">
+        <% } %>
+        <%= s.name %>
+        <% if (user) { %>
+          Add to List
+        <% } %>
+      </div>
+    <% }) %>
+  </div>
+<%- include('../partials/footer') %>
