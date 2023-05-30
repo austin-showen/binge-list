@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const seriesSchema = require('./series')
 
 const userSchema = new Schema(
   {
@@ -10,6 +11,7 @@ const userSchema = new Schema(
     },
     email: String,
     avatar: String
+    // seriesList: [seriesSchema]
   },
   {
     timestamps: true

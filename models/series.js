@@ -3,7 +3,16 @@ const Schema = mongoose.Schema
 
 const seriesSchema = new Schema(
   {
-    name: String
+    name: String,
+    description: String,
+    seasons: [],
+    thumbnail: String,
+    tmdbRating: Number,
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
   },
   { timestamps: true }
 )

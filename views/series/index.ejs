@@ -1,2 +1,14 @@
 <%- include('../partials/header') %>
+  <% if (series) { %>
+    <% series.forEach((s) => { %>
+      <div>
+        <p>Name: <%= s.name %></p>
+        <p>Description: <%= s.description %></p>
+        <p>Rating: <%= s.tmdbRating %></p>
+        <p>Seasons: <%= s.seasons.length %></p>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>Looks like you haven't added anything yet! <a href='/search/index'>Find a Show</a></p>
+  <% } %>
 <%- include('../partials/footer') %>

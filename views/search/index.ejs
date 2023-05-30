@@ -13,7 +13,9 @@
         <% } %>
         <%= s.name %>
         <% if (user) { %>
-          Add to List
+          <form action="/series?tmdbId=<%= s.id %>" method="POST">
+            <button>Add to My List</button>
+          </form>
         <% } %>
       </div>
     <% }) %>
