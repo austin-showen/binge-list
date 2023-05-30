@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 const seriesSchema = new Schema(
   {
     name: String,
+    tmdbId: Number,
     description: String,
     seasons: [],
     thumbnail: String,
