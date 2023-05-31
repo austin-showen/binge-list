@@ -8,6 +8,11 @@ const index = async (req, res) => {
   res.render('series/index', { title: 'My Binge List', series })
 }
 
+const show = async (req, res) => {
+  const series = await Series.findOne({ tmdbId: req.params.id })
+  res.render('series/show', { title: series.name, series })
+}
+
 const create = async (req, res) => {
   if (await Series.find({ tmdbId: req.query.tmdbId })) {
     res.redirect('/series')
@@ -36,7 +41,14 @@ const create = async (req, res) => {
   }
 }
 
+const deleteSeries = async (req, res) => {
+  await Series.findByIdAndDelete(req.params.id)
+  res.redirect('/series')
+}
+
 module.exports = {
   index,
-  create
+  show,
+  create,
+  delete: deleteSeries
 }

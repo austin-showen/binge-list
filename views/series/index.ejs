@@ -2,10 +2,13 @@
   <% if (series) { %>
     <% series.forEach((s) => { %>
       <div>
-        <p>Name: <a href='/series/<%= s.tmdbId%>'><%= s.name %></a></p>
+        <p>Name: <a href='/series/<%= s.tmdbId %>'><%= s.name %></a></p>
         <p>Description: <%= s.description %></p>
         <p>Rating: <%= s.tmdbRating %></p>
         <p>Seasons: <%= s.seasons.length %></p>
+        <form action="/series/<%= s._id %>?_method=DELETE" method="POST">
+          <button>Delete</button>
+        </form>
       </div>
     <% }) %>
   <% } else { %>
