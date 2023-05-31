@@ -3,9 +3,9 @@
     <input type="text" name="series">
     <button>Search</button>
   </form>
-  <div class="series-container">
+  <div class="search-container">
     <% series.forEach((s) => { %>
-      <div class="series-preview">
+      <div class="search-preview">
         <% if (s.poster_path) { %>
           <img class="thumbnail" src="https://image.tmdb.org/t/p/original/<%= s.poster_path %>" alt="<%= s.name %>">
         <% } else { %>

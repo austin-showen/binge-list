@@ -1,14 +1,16 @@
 <%- include('../partials/header') %>
   <% if (series) { %>
     <% series.forEach((s) => { %>
-      <div>
-        <p>Name: <a href='/series/<%= s.tmdbId %>'><%= s.name %></a></p>
-        <p>Description: <%= s.description %></p>
-        <p>Rating: <%= s.tmdbRating %></p>
-        <p>Seasons: <%= s.seasons.length %></p>
-        <form action="/series/<%= s._id %>?_method=DELETE" method="POST">
-          <button>Delete</button>
-        </form>
+      <div class="series-container">
+        <img class="series-thumbnail" src="https://image.tmdb.org/t/p/original/<%= s.thumbnail %>">
+        <div>
+          <h2><a href='/series/<%= s.tmdbId %>'><%= s.name %></a></h2>
+          <p>TheMovieDB Rating: <%= s.tmdbRating.toFixed(2) %> / 10</p>
+          <p>Seasons: <%= s.seasons.length %></p>
+          <form action="/series/<%= s._id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+          </form>
+        </div>
       </div>
     <% }) %>
   <% } else { %>
