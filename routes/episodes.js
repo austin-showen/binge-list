@@ -4,7 +4,7 @@ const episodesCtrl = require('../controllers/episodes')
 const ensureLoggedIn = require('../config/ensureLoggedIn')
 
 router.get(
-  '/series/:seriesId/episode/:episodeId',
+  '/series/:seriesId/season/:seasonNo/episode/:episodeNo',
   ensureLoggedIn,
   episodesCtrl.show
 )

@@ -14,7 +14,7 @@ const show = async (req, res) => {
 }
 
 const create = async (req, res) => {
-  if (await Series.find({ tmdbId: req.query.tmdbId })) {
+  if (await Series.exists({ tmdbId: req.query.tmdbId, user: req.user._id })) {
     res.redirect('/series')
   } else {
     const tmdbId = req.query.tmdbId
