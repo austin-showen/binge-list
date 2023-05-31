@@ -11,7 +11,7 @@
         <% } else { %>
           <img class="thumbnail" src="https://otv.one/uploads/default_image/thumbnail.jpg" alt="No Thumbnail Available">
         <% } %>
-        <%= s.name %>
+        <h3><%= s.name %></h3>
         <% if (user) { %>
           <form action="/series?tmdbId=<%= s.id %>" method="POST">
             <button>Add to My List</button>

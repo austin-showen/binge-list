@@ -1,3 +1,6 @@
 <%- include('../partials/header') %>
-  <%= episode %>
+  <div class="episode-banner">
+    <img class="episode-thumbnail" src="https://image.tmdb.org/t/p/original/<%= episode.thumbnail %>">
+    <h2>Season <%= episode.seasonNo %>, Episode <%= episode.episodeNo %>: <%= episode.name %></h2>
+  </div>
 <%- include('../partials/footer') %>

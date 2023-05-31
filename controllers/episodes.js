@@ -13,7 +13,7 @@ const show = async (req, res) => {
     user: req.user._id
   })
   res.render(`episodes/show`, {
-    title: 'Episode Details',
+    title: episode.seriesName,
     episode
   })
 }
@@ -36,11 +36,13 @@ const create = async (req, res) => {
 
     try {
       episode.name = response.data.name
-      episode.seriesName = series.$incname
+      episode.tmdbRating = response.data.vote_average
+      episode.thumbnail = response.data.still_path
+      episode.description = response.data.overview
+      episode.seriesName = series.name
       episode.seriesTmdbId = seriesId
       episode.seasonNo = seasonNo
       episode.episodeNo = episodeNo
-      episode.tmdbRating = response.data.vote_average
       episode.watched = false
       episode.series = series._id
       episode.user = req.user._id
