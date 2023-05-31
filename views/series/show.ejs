@@ -2,8 +2,10 @@
   <% series.seasons.forEach((season) => { %>
     <% if (season.season_number !== 0) { %>
       <h3>Season <%= season.season_number %>:</h3>
-      <% for (let i = 0; i < season.episode_count; i++) { %>
-        <a href="">Episode <%= i %></a>
+      <% for (let i = 1; i < season.episode_count + 1; i++) { %>
+        <form action="/series/<%= series.tmdbId %>/episode?season=<%= season.season_number %>&episode=<%= i %>" method="POST">
+          <button>Episode <%= i %></button>
+        </form>
       <% } %>
     <% } %>
   <% }) %>
