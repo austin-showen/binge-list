@@ -82,6 +82,17 @@ a:hover {
   max-width: 90%;
 }
 
+.series-container > div {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: start;
+  width: 100%;
+}
+
+.star-rating {
+  width: 200px;
+}
+
 .series-thumbnail {
   width: 200px;
   margin-right: 20px;
