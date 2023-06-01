@@ -9,5 +9,10 @@ router.get(
   episodesCtrl.show
 )
 router.post('/series/:seriesId/episode', ensureLoggedIn, episodesCtrl.create)
+router.put(
+  '/series/:seriesId/season/:seasonNo/episode/:episodeNo',
+  ensureLoggedIn,
+  episodesCtrl.update
+)
 
 module.exports = router

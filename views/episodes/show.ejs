@@ -1,6 +1,33 @@
 <%- include('../partials/header') %>
   <div class="episode-banner">
-    <img class="episode-thumbnail" src="https://image.tmdb.org/t/p/original/<%= episode.thumbnail %>">
     <h2>Season <%= episode.seasonNo %>, Episode <%= episode.episodeNo %>: <%= episode.name %></h2>
+    <img class="episode-thumbnail" src="https://image.tmdb.org/t/p/original/<%= episode.thumbnail %>">
+    <p class="summary"><%= episode.description %></p>
   </div>
+  <div class="episode-review">
+    <% if (episode.watched) { %>
+      Your Rating: <%= episode.userRating %>
+    <% } else { %>
+      <form class="episode-review-form" action="./<%= episode.episodeNo %>?_method=PUT" method="POST">
+        <p>Have you watched this episode? Leave a rating and some thoughts!</p>
+        <p>Rating: 
+          <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </p>
+        <textarea name="comment" placeholder="Journal your thoughts!" rows="4"></textarea><br>
+        <button id="submit-review">Submit</button>
+      </form>
+    <% } %>
+  </div>
+  <a href="/series/<%= episode.seriesTmdbId %>">Back to <%= episode.seriesName %></a>
 <%- include('../partials/footer') %>

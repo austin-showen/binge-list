@@ -5,13 +5,17 @@ const axios = require('axios')
 const API_KEY = process.env.API_KEY
 
 const show = async (req, res) => {
+  const seriesId = req.params.seriesId
   const seasonNo = req.params.seasonNo
   const episodeNo = req.params.episodeNo
+
   const episode = await Episode.findOne({
+    seriesTmdbId: seriesId,
     seasonNo: seasonNo,
     episodeNo: episodeNo,
     user: req.user._id
   })
+
   res.render(`episodes/show`, {
     title: episode.seriesName,
     episode
@@ -22,7 +26,14 @@ const create = async (req, res) => {
   const seriesId = req.params.seriesId
   const seasonNo = req.query.season
   const episodeNo = req.query.episode
-  if (await Episode.exists({ seasonNo: seasonNo, episodeNo: episodeNo })) {
+  if (
+    await Episode.exists({
+      seasonNo: seasonNo,
+      episodeNo: episodeNo,
+      seriesTmdbId: seriesId,
+      user: req.user._id
+    })
+  ) {
     console.log('hello')
     res.redirect(`/series/${seriesId}/season/${seasonNo}/episode/${episodeNo}`)
   } else {
@@ -55,7 +66,24 @@ const create = async (req, res) => {
   }
 }
 
+const update = async (req, res) => {
+  const episode = await Episode.findOne({
+    seasonNo: req.params.seasonNo,
+    episodeNo: req.params.episodeNo,
+    seriesTmdbId: req.params.seriesId,
+    user: req.user._id
+  })
+  console.log(episode)
+  episode.userRating = req.body.rating
+  episode.watched = true
+  episode.save()
+  res.redirect(
+    `/series/${req.params.seriesId}/season/${req.params.seasonNo}/episode/${req.params.episodeNo}`
+  )
+}
+
 module.exports = {
   show,
-  create
+  create,
+  update
 }

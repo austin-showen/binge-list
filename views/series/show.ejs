@@ -4,7 +4,7 @@
       <h3>Season <%= season.season_number %>:</h3>
       <% for (let i = 1; i < season.episode_count + 1; i++) { %>
         <form action="/series/<%= series.tmdbId %>/episode?season=<%= season.season_number %>&episode=<%= i %>" method="POST">
-          <button>Episode <%= i %></button>
+          <button class="unwatched">Episode <%= i %></button>
         </form>
       <% } %>
     <% } %>

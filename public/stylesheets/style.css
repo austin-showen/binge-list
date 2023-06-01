@@ -78,6 +78,7 @@ a:hover {
   padding: 20px;
   border: 5px solid var(--accent-color-1);
   border-radius: 20px;
+  max-width: 90%;
 }
 
 .series-thumbnail {
@@ -90,8 +91,54 @@ a:hover {
 .episode-banner {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .episode-thumbnail {
-  width: 100vw;
+  width: 90vw;
+}
+
+.summary {
+  font-style: italic;
+  font-size: 14px;
+  margin: 3vw 8vw;
+}
+
+.episode-review {
+  background-color: var(--accent-color-2);
+  color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 5px solid var(--accent-color-1);
+  border-radius: 20px;
+  min-width: 80vw;
+}
+
+.episode-review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode-review-form > textarea {
+  width: 100%;
+}
+
+.unwatched {
+  background-color: gray;
+}
+
+.watched-bad {
+  background-color: red;
+}
+
+.watched-mid {
+  background-color: yellow;
+}
+
+.watched-good {
+  background-color: green;
 }
