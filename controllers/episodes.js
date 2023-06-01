@@ -114,7 +114,7 @@ const update = async (req, res) => {
   })
   console.log(episode)
   episode.userRating = req.body.rating
-  // episode.userComments.push(req.body.comment)
+  if (req.body.comment) episode.userComments.push(req.body.comment)
   episode.watched = true
   episode.save()
   res.redirect(

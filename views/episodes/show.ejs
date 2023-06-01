@@ -14,7 +14,31 @@
   </div>
   <div class="episode-review">
     <% if (episode.watched) { %>
-      Your Rating: <%= episode.userRating %>
+      <form class="episode-review-form" action="./<%= episode.episodeNo %>?_method=PUT" method="POST">
+        <h3>Your Rating: <%= episode.userRating %></h3>
+        <p>Change Rating: 
+          <select name="rating">
+            <option value="1" <% if (episode.userRating === 1) { %>selected<% } %>>1</option>
+            <option value="2" <% if (episode.userRating === 2) { %>selected<% } %>>2</option>
+            <option value="3" <% if (episode.userRating === 3) { %>selected<% } %>>3</option>
+            <option value="4" <% if (episode.userRating === 4) { %>selected<% } %>>4</option>
+            <option value="5" <% if (episode.userRating === 5) { %>selected<% } %>>5</option>
+            <option value="6" <% if (episode.userRating === 6) { %>selected<% } %>>6</option>
+            <option value="7" <% if (episode.userRating === 7) { %>selected<% } %>>7</option>
+            <option value="8" <% if (episode.userRating === 8) { %>selected<% } %>>8</option>
+            <option value="9" <% if (episode.userRating === 9) { %>selected<% } %>>9</option>
+            <option value="10" <% if (episode.userRating === 10) { %>selected<% } %>>10</option>
+          </select>
+        </p>
+        <% if (episode.userComments) { %>
+          <h3>Your Comments:</h3>
+          <% episode.userComments.forEach((comment) => { %>
+            <p><%= comment %></p>
+          <% }) %>
+        <% } %>
+        <textarea name="comment" placeholder="Add a comment!" rows="4"></textarea><br>
+        <button id="submit-review">Submit</button>
+      </form>
     <% } else { %>
       <form class="episode-review-form" action="./<%= episode.episodeNo %>?_method=PUT" method="POST">
         <p>Have you watched this episode? Leave a rating and some thoughts!</p>
