@@ -18,6 +18,12 @@ const show = async (req, res) => {
 
   const episodeRatings = {}
 
+  let firstUnwatched = {
+    seasonNo: 0,
+    episodeNo: 0,
+    exists: false
+  }
+
   episodeList.forEach((episode) => {
     if (episode.userRating) {
       const episodeId = episode.seasonNo + 'x' + episode.episodeNo
@@ -25,9 +31,11 @@ const show = async (req, res) => {
     }
   })
 
-  console.log(episodeRatings)
-
-  res.render('series/show', { title: series.name, series, episodeRatings })
+  res.render('series/show', {
+    title: series.name,
+    series,
+    episodeRatings
+  })
 }
 
 const create = async (req, res) => {

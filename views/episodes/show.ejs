@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
   <div class="episode-banner">
     <h2>Season <%= episode.seasonNo %>, Episode <%= episode.episodeNo %>: <%= episode.name %></h2>
-    <% if (episode.userRating) { %><h3>Your Rating: <img src="/images/rating<%= episode.userRating %>.png"></h3> <% } %>
+    <% if (episode.userRating) { %><h3>My Rating: <img src="/images/rating<%= episode.userRating %>.png"></h3> <% } %>
     <div class="episode-nav">
       <form action="/series/<%= episode.seriesTmdbId %>/episode?season=<%= prevEpisode.seasonNo %>&episode=<%= prevEpisode.episodeNo %>" method="POST">
         <button <% if (!prevEpisode.exists) { %>disabled<% } %>>Previous Episode</button>
@@ -17,12 +17,12 @@
     <% if (episode.watched) { %>
       <form class="episode-review-form" action="./<%= episode.episodeNo %>?_method=PUT" method="POST">
         <% if (episode.userComments.length > 0) { %>
-          <h3>Your Comments:</h3>
+          <h3>My Comments:</h3>
           <% episode.userComments.forEach((comment) => { %>
-            <p><%= comment %></p>
+            <p>- <%= comment %></p>
             <% }) %>
             <% } %>
-            <textarea name="comment" placeholder="Add a comment!" rows="4"></textarea><br>
+            <textarea class="textarea-comment" name="comment" placeholder="Add a comment!" rows="4"></textarea><br>
             <p>Change Rating: 
               <select name="rating">
                 <option value="1" <% if (episode.userRating === 1) { %>selected<% } %>>1</option>
@@ -56,7 +56,7 @@
             <option value="10">10</option>
           </select>
         </p>
-        <textarea name="comment" placeholder="Journal your thoughts!" rows="4"></textarea><br>
+        <textarea class="textarea-comment" name="comment" placeholder="Journal your thoughts!" rows="4"></textarea><br>
         <button id="submit-review">Submit</button>
       </form>
     <% } %>

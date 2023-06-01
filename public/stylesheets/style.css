@@ -28,6 +28,24 @@ header {
   border-bottom: 2px solid var(--accent-color-1);
 }
 
+button {
+  font-family: 'Comfortaa', Helvetica, Arial, sans-serif;
+  padding: 5px;
+  background-color: var(--accent-color-1);
+  color: var(--bg-color);
+  border-radius: 5px;
+  border: 1px solid var(--text-color);
+}
+
+button:active {
+  background-color: var(--accent-color-3);
+}
+
+input, textarea {
+  font-family: 'Comfortaa', Helvetica, Arial, sans-serif;
+  padding: 5px;
+  color: var(--text-color);
+}
 
 h1 {
   font-size: 8vmin;
@@ -143,7 +161,20 @@ a:hover {
 }
 
 textarea {
+  margin-top: 30px;
   width: 100%;
+}
+
+.season-list-container {
+  margin: 40px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--accent-color-2);
+  color: var(--bg-color);
+  border: 5px solid var(--accent-color-1);
+  border-radius: 20px;
 }
 
 .season-episode-list {
@@ -154,12 +185,14 @@ textarea {
 
 .episode-button {
   content-visibility: hidden;
+  color: var(--text-color);
   border: 1px solid var(--text-color);
-  height: 20px;
+  height: 25px;
   width: 20px;
   transition: width 200ms;
   cursor: pointer;
   text-align: center;
+  border-radius: 0;
 }
 
 .episode-button:hover {
@@ -169,20 +202,19 @@ textarea {
 }
 
 .unwatched {
-  background-color: gray;
+  background-color: var(--bg-color);
 }
 
 .watched-bad {
-  background-color: red;
+  background-color: #de5b49;
 }
 
 .watched-mid {
-  background-color: yellow;
+  background-color: #f0ca4d;
 }
 
 .watched-good {
-  background-color: green;
-  content: hidden;
+  background-color: #1c8200;
 }
 
 .episode-nav {
@@ -204,5 +236,11 @@ textarea {
   .episode-review {
     min-width: 0;
     width: 1000px;
+  }
+  .star-rating {
+    width: auto;
+  }
+  .season-list-container {
+    width: 800px;
   }
 }
