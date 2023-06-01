@@ -1,19 +1,28 @@
 <%- include('../partials/header') %>
+  <img class="series-backdrop" src="https://image.tmdb.org/t/p/original/<%= series.backdrop %>">
   <% series.seasons.forEach((season) => { %>
     <% if (season.season_number !== 0) { %>
       <h3>Season <%= season.season_number %>:</h3>
-      <% for (let i = 1; i < season.episode_count + 1; i++) { %>
-        <form action="/series/<%= series.tmdbId %>/episode?season=<%= season.season_number %>&episode=<%= i %>" method="POST">
-          <% const episodeId = season.season_number + 'x' + i %>
-          <% let ratingClass = "unwatched" %>
-          <% if (episodeRatings[episodeId]) { %>
-            <% if (episodeRatings[episodeId] > 7) { ratingClass = "watched-good" %>
-            <% } else if (episodeRatings[episodeId] > 4) { ratingClass = "watched-mid" %>
-            <% } else { ratingClass = "watched-bad" } %>
-          <% } %>
-          <button class="<%= ratingClass %>">Episode <%= i %></button>
-        </form>
+      <div class="season-episode-list">
+        <% for (let i = 1; i < season.episode_count + 1; i++) { %>
+  
+          <form action="/series/<%= series.tmdbId %>/episode?season=<%= season.season_number %>&episode=<%= i %>" method="POST">
+  
+            <% const episodeId = season.season_number + 'x' + i %>
+            <% let ratingClass = "unwatched" %>
+            <% if (episodeRatings[episodeId]) { %>
+              <% if (episodeRatings[episodeId] > 7) { ratingClass = "watched-good" %>
+              <% } else if (episodeRatings[episodeId] > 4) { ratingClass = "watched-mid" %>
+              <% } else { ratingClass = "watched-bad" } %>
+            <% } %>
+  
+            <button class="<%= ratingClass %> episode-button">Episode&nbsp;<%= i %></button>
+  
+          </form>
+  
+        <% } %>
       <% } %>
-    <% } %>
+      </div>
   <% }) %>
+  <h2><a href='/series'>Back to My Shows</a></h2>
 <%- include('../partials/footer') %>

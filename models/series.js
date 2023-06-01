@@ -8,6 +8,7 @@ const seriesSchema = new Schema(
     description: String,
     seasons: [],
     thumbnail: String,
+    backdrop: String,
     tmdbRating: Number,
     user: {
       type: Schema.Types.ObjectId,

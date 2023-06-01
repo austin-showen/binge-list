@@ -12,7 +12,7 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   const series = await Series.findOne({ tmdbId: req.params.id })
   const episodeList = await Episode.find({
-    series: series._id,
+    seriesTmdbId: series.tmdbId,
     user: req.user._id
   })
 
@@ -47,6 +47,7 @@ const create = async (req, res) => {
       series.description = response.data.overview
       series.seasons = response.data.seasons
       series.thumbnail = response.data.poster_path
+      series.backdrop = response.data.backdrop_path
       series.tmdbRating = response.data.vote_average
       series.user = req.user._id
       series.save()
