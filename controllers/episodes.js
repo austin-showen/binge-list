@@ -6,8 +6,8 @@ const API_KEY = process.env.API_KEY
 
 const show = async (req, res) => {
   const seriesId = req.params.seriesId
-  const seasonNo = req.params.seasonNo
-  const episodeNo = req.params.episodeNo
+  const seasonNo = parseInt(req.params.seasonNo)
+  const episodeNo = parseInt(req.params.episodeNo)
 
   const episode = await Episode.findOne({
     seriesTmdbId: seriesId,
@@ -16,9 +16,48 @@ const show = async (req, res) => {
     user: req.user._id
   })
 
+  const series = await Series.findOne({
+    tmdbId: seriesId,
+    user: req.user._id
+  })
+
+  const prevEpisode = {
+    seasonNo: seasonNo,
+    episodeNo: episodeNo - 1,
+    exists: true
+  }
+
+  const nextEpisode = {
+    seasonNo: seasonNo,
+    episodeNo: episodeNo + 1,
+    exists: true
+  }
+
+  if (prevEpisode.episodeNo < 1) {
+    prevEpisode.seasonNo -= 1
+    if (prevEpisode.seasonNo < 1) {
+      prevEpisode.exists = false
+    } else {
+      prevEpisode.episodeNo = series.seasons[prevEpisode.seasonNo].episode_count
+    }
+  }
+
+  if (nextEpisode.episodeNo > series.seasons[seasonNo].episode_count) {
+    nextEpisode.seasonNo += 1
+    if (nextEpisode.seasonNo >= series.seasons.length) {
+      nextEpisode.exists = false
+    } else {
+      nextEpisode.episodeNo = 1
+    }
+  }
+
+  console.log(prevEpisode, nextEpisode)
+
   res.render(`episodes/show`, {
     title: episode.seriesName,
-    episode
+    episode,
+    prevEpisode,
+    nextEpisode
   })
 }
 
@@ -75,7 +114,7 @@ const update = async (req, res) => {
   })
   console.log(episode)
   episode.userRating = req.body.rating
-  episode.userComments.push(req.body.comment)
+  // episode.userComments.push(req.body.comment)
   episode.watched = true
   episode.save()
   res.redirect(
