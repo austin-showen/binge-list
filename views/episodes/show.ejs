@@ -2,8 +2,12 @@
   <div class="episode-banner">
     <h2>Season <%= episode.seasonNo %>, Episode <%= episode.episodeNo %>: <%= episode.name %></h2>
     <div class="episode-nav">
-      <button <% if (!prevEpisode.exists) { %>disabled<% } %>>Previous Episode</button>
-      <button <% if (!nextEpisode.exists) { %>disabled<% } %>>Next Episode</button>
+      <form action="/series/<%= episode.seriesTmdbId %>/episode?season=<%= prevEpisode.seasonNo %>&episode=<%= prevEpisode.episodeNo %>" method="POST">
+        <button <% if (!prevEpisode.exists) { %>disabled<% } %>>Previous Episode</button>
+      </form>
+      <form action="/series/<%= episode.seriesTmdbId %>/episode?season=<%= nextEpisode.seasonNo %>&episode=<%= nextEpisode.episodeNo %>" method="POST">
+        <button <% if (!nextEpisode.exists) { %>disabled<% } %>>Next Episode</button>
+      </form>
     </div>
     <img class="episode-thumbnail" src="https://image.tmdb.org/t/p/original/<%= episode.thumbnail %>">
     <p class="summary"><%= episode.description %></p>

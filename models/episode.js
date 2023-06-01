@@ -12,6 +12,7 @@ const episodeSchema = new Schema(
     episodeNo: Number,
     watched: Boolean,
     userRating: Number,
+    userComments: [String],
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',

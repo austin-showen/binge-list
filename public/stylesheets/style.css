@@ -120,7 +120,7 @@ a:hover {
   padding: 20px;
   border: 5px solid var(--accent-color-1);
   border-radius: 20px;
-  min-width: 80vw;
+  min-width: 70vw;
   margin-bottom: 30px;
 }
 
@@ -173,7 +173,16 @@ a:hover {
   content: hidden;
 }
 
-@media only screen and (min-width: 800px) {
+.episode-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.episode-nav button {
+  margin: 10px 10px 30px 10px;
+}
+
+@media only screen and (min-width: 1000px) {
   .series-container {
     width: 600px;
   }
