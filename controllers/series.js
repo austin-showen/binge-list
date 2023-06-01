@@ -1,4 +1,5 @@
 const Series = require('../models/series')
+const Episode = require('../models/episode')
 const mongoose = require('mongoose')
 const axios = require('axios')
 const API_KEY = process.env.API_KEY
@@ -10,7 +11,23 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
   const series = await Series.findOne({ tmdbId: req.params.id })
-  res.render('series/show', { title: series.name, series })
+  const episodeList = await Episode.find({
+    series: series._id,
+    user: req.user._id
+  })
+
+  const episodeRatings = {}
+
+  episodeList.forEach((episode) => {
+    if (episode.userRating) {
+      const episodeId = episode.seasonNo + 'x' + episode.episodeNo
+      episodeRatings[episodeId] = episode.userRating
+    }
+  })
+
+  console.log(episodeRatings)
+
+  res.render('series/show', { title: series.name, series, episodeRatings })
 }
 
 const create = async (req, res) => {

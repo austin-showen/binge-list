@@ -141,4 +141,5 @@ a:hover {
 
 .watched-good {
   background-color: green;
+  content: hidden;
 }
