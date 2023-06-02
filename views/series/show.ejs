@@ -1,8 +1,5 @@
 <%- include('../partials/header') %>
   <img class="series-backdrop" src="https://image.tmdb.org/t/p/original/<%= series.backdrop %>">
-    <form action="/search/<%= series.tmdbId %>">
-      <button>Search for Shows Like <%= series.name %></button>
-    </form>
     <span class="season-list-container">
 
       <% series.seasons.forEach((season) => { %>
@@ -31,5 +28,5 @@
       <% }) %>
 
         </span>
-  <h2><a href='/series'>Back to My Shows</a></h2>
+  <h2><a href='/series'>Back to My Binge List</a></h2>
 <%- include('../partials/footer') %>

@@ -51,8 +51,6 @@ const show = async (req, res) => {
     }
   }
 
-  console.log(prevEpisode, nextEpisode)
-
   res.render(`episodes/show`, {
     title: episode.seriesName,
     episode,
@@ -73,7 +71,6 @@ const create = async (req, res) => {
       user: req.user._id
     })
   ) {
-    console.log('hello')
     res.redirect(`/series/${seriesId}/season/${seasonNo}/episode/${episodeNo}`)
   } else {
     const series = await Series.findOne({ tmdbId: seriesId })
@@ -112,7 +109,6 @@ const update = async (req, res) => {
     seriesTmdbId: req.params.seriesId,
     user: req.user._id
   })
-  console.log(episode)
   episode.userRating = req.body.rating
   if (req.body.comment) episode.userComments.push(req.body.comment)
   episode.watched = true

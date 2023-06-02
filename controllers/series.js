@@ -10,19 +10,17 @@ const index = async (req, res) => {
 }
 
 const show = async (req, res) => {
-  const series = await Series.findOne({ tmdbId: req.params.id })
+  const series = await Series.findOne({
+    tmdbId: req.params.id,
+    user: req.user._id
+  })
+
   const episodeList = await Episode.find({
     seriesTmdbId: series.tmdbId,
     user: req.user._id
   })
 
   const episodeRatings = {}
-
-  let firstUnwatched = {
-    seasonNo: 0,
-    episodeNo: 0,
-    exists: false
-  }
 
   episodeList.forEach((episode) => {
     if (episode.userRating) {
@@ -46,7 +44,6 @@ const create = async (req, res) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/tv/${tmdbId}?language=en-US&api_key=${API_KEY}`
     )
-    console.log(response)
     const series = new Series()
 
     try {
