@@ -1,10 +1,10 @@
-# **_Binge Buddy_**
+# **_Binge List_**
 
-## Date: 5/25/2023
+## Date: 6/2/2023
 
 ### Author: Austin Showen
 
-[Website](#) | [GitHub](https://github.com/austin-showen) | [LinkedIn](#)
+[Website](#) | [GitHub](https://github.com/austin-showen) | [LinkedIn](https://linkedin.com/in/austin-showen)
 
 ---
 
@@ -28,35 +28,50 @@
 
 ### **_About the App_**
 
-#### Binge Buddy is a web application designed to help users track and journal their progress as they watch their favorite TV shows. Using data from TheMovieDB's API, Binge Buddy allows users to search for shows and add them to their personal watch lists. Users can then access details on individual episodes, mark them as Watched or Watch Later, rate them, and leave comments or reviews.
+#### Binge List is a web application designed to help users track and journal their progress as they watch their favorite TV shows. Using data from TheMovieDB's API, Binge List allows users to search for shows and add them to their personal watch lists. Users can then access details on individual episodes, mark them as Watched, rate them, and leave comments or reviews.
 
-#### AAU Stories (MVP):
+#### Specifications:
 
-- AAU, I should see a home page with the option to log in via Google.
-- AAU, I want to be able to search for a TV series (TMDB API query) and add it to my list.
-- AAU, I want to see information about each TV series on my list (series/show route).
-- AAU, I want to see information about specific episodes of each series (series/episode/show route).
-- AAU, I want to be able to mark a TV series on my list as Watched, In Progress, or Watch Later.
-- AAU, I want to be able to mark individual episodes as Watched or Watch Later.
-- AAU, I want to be able to rate TV series and individual episodes.
+- The home page provides the option to log in via Google OAuth.
+- Without logging in, user activity is limited to basic searches.
+- Once logged in, users can search for shows and add them to their Binge Lists.
+- Users can see basic information about each TV series on their list.
+- From the series index page, users can search for similar series.
+- Users can see basic information about every episode of every TV series on their list.
+- Once a user has watched an episode, they can leave ratings and comments.
+- Users' episode ratings are visualized on the series detail screen.
+- The user interface responds to a variety of screen sizes.
 
 ---
 
 ### **_Screenshots_**
 
-#### To Be Added
+#### Landing Page
+![Landing Page](/screenshots/landing-page.png)
+
+#### Search Results (Default Search - Popular Series)
+![Search Results](/screenshots/search-results.png)
+
+#### User's Binge List
+![Binge List](/screenshots/binge-list.png)
+
+#### Season List and Episode Rating Visualization
+![Season List](/screenshots/season-list.png)
+
+#### Episode Details
+![Episode Details](/screenshots/episode-details.png)
 ---
 
 ### **_Stretch Goals_**
 
-- [ ] AAU, I want to see visualizations of my TV series and episode ratings.
-- [ ] AAU, I want to see a visualization of my progress as I watch more episodes of a TV series.
-- [ ] AAU, I want the app to show me recommendations of similar TV series.
+- [x] AAU, I want to see visualizations of my TV series and episode ratings.
+- [x] AAU, I want to see a visualization of my progress as I watch more episodes of a TV series.
+- [x] AAU, I want the app to show me recommendations of similar TV series.
 - [ ] AAU, I want to be able to sort my series by genre.
 
 ---
 
 ### **_Credits_**
 
-##### To Be Added
+##### API: [TheMovieDB](themoviedb.org)
 
