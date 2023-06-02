@@ -1,5 +1,8 @@
 <%- include('../partials/header') %>
   <img class="series-backdrop" src="https://image.tmdb.org/t/p/original/<%= series.backdrop %>">
+    <form action="/search/<%= series.tmdbId %>">
+      <button>Search for Shows Like <%= series.name %></button>
+    </form>
     <span class="season-list-container">
 
       <% series.seasons.forEach((season) => { %>

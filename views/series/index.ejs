@@ -8,6 +8,9 @@
           <p>TheMovieDB Rating: <%= s.tmdbRating.toFixed(2) %> / 10</p>
           <img class="star-rating" src="/images/rating<%= Math.floor(s.tmdbRating) %>.png">
           <p>Seasons: <%= s.seasons.length - 1 %></p>
+          <form action="/search/<%= s.tmdbId %>">
+            <button>More Shows Like <%= s.name %></button>
+          </form><br>
           <form action="/series/<%= s._id %>?_method=DELETE" method="POST">
             <button>Delete</button>
           </form>
