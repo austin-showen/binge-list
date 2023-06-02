@@ -3,6 +3,6 @@
     <h2>Welcome to <%= title %>!</h2>
     <h3>Keep track of the TV shows you're watching. Leave ratings and comments.</h3>
     <h3>With Binge List, you can see the trends in your series ratings at a glance!</h3>
-    <h3><a href='/search'>Find a Show</a> | <% if (!user) { %><a href="/auth/google">Log In</a><% } else { %><a href='/series'>My Binge List</a> | <a href='/logout'>Log Out</a><% } %></h3>
+    <h2><a href='/search'>Find a Show</a> | <% if (!user) { %><a href="/auth/google">Log In</a><% } else { %><a href='/series'>My Binge List</a> | <a href='/logout'>Log Out</a><% } %></h2>
   </div>
 <%- include('./partials/footer') %>
