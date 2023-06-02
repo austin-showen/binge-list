@@ -1,5 +1,8 @@
 <%- include('./partials/header') %>
-    <p>Welcome to <%= title %>!</p>
-    <p>Keep track of the TV shows you're watching.</p>
-    <p>To get started, <a href="/search">Find a Show</a>.</p>
+  <div class="landing-blurb">
+    <h2>Welcome to <%= title %>!</h2>
+    <h3>Keep track of the TV shows you're watching. Leave ratings and comments.</h3>
+    <h3>With Binge List, you can see the trends in your series ratings at a glance!</h3>
+    <h3><a href='/search'>Find a Show</a> | <% if (!user) { %><a href="/auth/google">Log In</a><% } else { %><a href='/series'>My Binge List</a> | <a href='/logout'>Log Out</a><% } %></h3>
+  </div>
 <%- include('./partials/footer') %>
