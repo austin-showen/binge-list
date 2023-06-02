@@ -49,7 +49,7 @@
 #### Landing Page
 ![Landing Page](/screenshots/landing-page.png)
 
-#### Search Results (Default Search - Popular Series)
+#### Search Results (Default Search - Popular Shows)
 ![Search Results](/screenshots/search-results.png)
 
 #### User's Binge List
